@@ -11,7 +11,7 @@ class Person < ActiveRecord::Base
     validates :first_name,:last_name,:presence => true
     validates :year_of_birth, :numericality => { :only_integer => true }
     validates :year_of_birth, :numericality => { :grater_than_or_equal_to => 1900 }
-    #before_save { |person| person.planet_of_birth = "Earth" if person.planet_of_birth.blank? }
+    before_save { |person| person.planet_of_birth = "Earth" if person.planet_of_birth.blank? }
 end
 
 

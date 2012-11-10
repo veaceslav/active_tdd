@@ -31,4 +31,8 @@ class TestPersonModel < Test::Unit::TestCase
 
      end
 
+     def test_if_respond_to_fuzzy_search
+        assert_respond_to(Person, :fuzzy_search, failure_message = "It doesn't respond to fuzzy search")
+     end
+
 end
