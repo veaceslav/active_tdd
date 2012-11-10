@@ -22,4 +22,13 @@ class TestPersonModel < Test::Unit::TestCase
         assert(p.errors.messages.has_key?(:year_of_birth), fail_mess = "Doesn't check for numerically year of birth")
      end
 
+     def test_that_it_gives_a_default_value_to_a_planet_of_birth
+        p = Person.new :first_name => "John", :last_name => "Doe", :year_of_birth => 1992
+        assert(p.save, failure_message = "Could not save a new Person object." )
+        pob = p.planet_of_birth
+        p.destroy
+        assert( pob == "Earth", failure_message = "It does not give panet_of_birth a default value")
+
+     end
+
 end
