@@ -16,4 +16,10 @@ class TestPersonModel < Test::Unit::TestCase
         end
      end
 
+     def test_if_checks_for_numerically_of_year_of_birth
+        p = Person.new :first_name => "John" , :last_name => "Doe", :year_of_birth => "abc"
+        p.valid?
+        assert(p.errors.messages.has_key?(:year_of_birth), fail_mess = "Doesn't check for numerically year of birth")
+     end
+
 end
